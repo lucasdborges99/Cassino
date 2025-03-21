@@ -17,7 +17,6 @@ namespace Cassino
         int[] tempos;
         Label[] tela;
         Random r;
-
         public Form1()
         {
             InitializeComponent();
@@ -25,15 +24,12 @@ namespace Cassino
             tempos = new int[3];
             tela = new Label[] { lbl1, lbl2, lbl3 };
             r = new Random();
-
             for (int i = 0; i < roleta.Length; i++)
             {
                 roleta[i] = r.Next(0, 10);
                 Atualizar(i);
             }
-
         }
-
         void Atualizar(int indice)
         {
             tela[indice].Text = roleta[indice].ToString();
@@ -41,40 +37,50 @@ namespace Cassino
 
         private void btGirar_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < roleta.Length; i++)
+            for (int i = 0; i < tempos.Length; i++)
             {
-                tempos[i] = r.Next(0, 21);
+                tempos[i] = r.Next(1, 21);
                 tela[i].ForeColor = Color.Black;
-                btGirar.Enabled = false;
-                tmrGiro.Enabled = true;
             }
+            Array.Sort(tempos);
+            btGirar.Enabled = false;
+            tmrGiro.Enabled = true;
         }
-
         private void tmrGiro_Tick(object sender, EventArgs e)
         {
             bool parado = true;
-            for (int i = 0; i < roleta.Length; i++)
+            for (int i = 0; i < tempos.Length; i++)
             {
                 if (tempos[i] > 0)
                 {
                     tempos[i]--;
                     if (tempos[i] == 0)
+                    {
                         tela[i].ForeColor = Color.Red;
-
+                    }
                     roleta[i]++;
                     if (roleta[i] == 10)
+                    {
                         roleta[i] = 0;
+                    }
                     Atualizar(i);
-                    parado &= false;     
+                    parado &= false;
                 }
-  
-
-                if (parado)
+                else
                 {
-                    btGirar.Enabled = true;
-                    tmrGiro.Enabled = false;
+                    parado &= true;
                 }
             }
+            if (parado)
+            {
+                btGirar.Enabled = true;
+                tmrGiro.Enabled = false;
+            }
+               if(roleta[0] == roleta[1] && roleta[1] == roleta[2])
+            {
+                MessageBox.Show("Você ganhou!");
+            }
+               
         }
     }
 }
