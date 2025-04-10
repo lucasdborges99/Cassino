@@ -75,12 +75,40 @@ namespace Cassino
             {
                 btGirar.Enabled = true;
                 tmrGiro.Enabled = false;
+                lxUltimos.Items.Add($"{roleta[0]}-{roleta[1]}-{roleta[2]}\n");
             }
-               if(roleta[0] == roleta[1] && roleta[1] == roleta[2])
+            if (roleta[0] == roleta[1] && roleta[1] == roleta[2] && tela[2].ForeColor == Color.Red)
             {
                 MessageBox.Show("Você ganhou!");
             }
                
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("Você abriu o cassino");
+        }
+        List<string> jogadas;
+        private void chbVitorias_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbVitorias.Checked)
+            {
+                jogadas = new List<string>();
+                foreach (string item in lxUltimos.Items)
+                {
+                    jogadas.Add(item);
+                    string[] nums = item.Split(',');
+                    if (nums[0] == nums[1] && nums[1] == nums[2])
+                        lxUltimos.Items.Add(item);
+                }   
+            }
+            else
+            {
+                foreach(string item in jogadas)
+                {
+                    lxUltimos.Items.Add(item);
+                }
+            }
         }
     }
 }
