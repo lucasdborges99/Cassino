@@ -97,10 +97,14 @@ namespace Cassino
                 foreach (string item in lxUltimos.Items)
                 {
                     jogadas.Add(item);
+                }   
+                lxUltimos.Items.Clear();
+                foreach(string item in jogadas)
+                {
                     string[] nums = item.Split(',');
                     if (nums[0] == nums[1] && nums[1] == nums[2])
                         lxUltimos.Items.Add(item);
-                }   
+                }
             }
             else
             {
