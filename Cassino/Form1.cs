@@ -22,6 +22,8 @@ namespace Cassino
         public Form1()
         {
             InitializeComponent();
+            btGirar.TabIndex = 0;
+            chbVitorias.TabIndex = 1;
             roleta = new int[3];
             tempos = new int[3];
             tela = new Label[] { lbl1, lbl2, lbl3 };

@@ -89,7 +89,7 @@
             this.btGirar.Name = "btGirar";
             this.btGirar.Size = new System.Drawing.Size(236, 81);
             this.btGirar.TabIndex = 3;
-            this.btGirar.Text = "Girar";
+            this.btGirar.Text = "&Girar";
             this.btGirar.UseVisualStyleBackColor = false;
             this.btGirar.Click += new System.EventHandler(this.btGirar_Click);
             // 
@@ -115,7 +115,7 @@
             this.chbVitorias.Name = "chbVitorias";
             this.chbVitorias.Size = new System.Drawing.Size(201, 43);
             this.chbVitorias.TabIndex = 5;
-            this.chbVitorias.Text = "Só Vitórias";
+            this.chbVitorias.Text = "Só &Vitórias";
             this.chbVitorias.UseVisualStyleBackColor = true;
             this.chbVitorias.CheckedChanged += new System.EventHandler(this.chbVitorias_CheckedChanged);
             // 
